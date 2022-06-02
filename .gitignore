@@ -1,0 +1,8 @@
+*.pyc
+.mypy_cache
+
+# File for environment variables
+.env
+
+# Virtual environments' files
+.venv
