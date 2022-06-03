@@ -6,3 +6,6 @@
 
 # Virtual environments' files
 .venv
+
+# SQLLite files
+*.db
