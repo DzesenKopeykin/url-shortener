@@ -9,6 +9,14 @@ def get_db_url_by_key(db: Session, key: str) -> models.URL | None:
     )
 
 
+def get_db_url_by_secret_key(db: Session, secret_key: str) -> models.URL | None:
+    return (
+        db.query(models.URL)
+        .filter(models.URL.secret_key == secret_key, models.URL.is_active)
+        .first()
+    )
+
+
 def create_db_url(db: Session, url: schemas.URLBase) -> models.URL:
     key = keygen.create_unique_random_key(db)
     secret_key = f"{key}_{keygen.create_random_key(length=8)}"
