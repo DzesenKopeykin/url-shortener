@@ -25,3 +25,10 @@ def create_db_url(db: Session, url: schemas.URLBase) -> models.URL:
     db.commit()
     db.refresh(db_url)
     return db_url
+
+
+def increment_clicks_for_db_url(db: Session, db_url: models.URL) -> models.URL:
+    db_url.clicks += 1
+    db.commit()
+    db.refresh(db_url)
+    return db_url
